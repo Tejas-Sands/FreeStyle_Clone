@@ -90,6 +90,8 @@ for await (const count of counter.countStream()) {
 ` }
 ];
 
+type StyleProps = { [key: string]: CSSProperties };
+
 export default function Slider(){
 
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -133,7 +135,7 @@ export default function Slider(){
                           const match = /language-(\w+)/.exec(className || '')
                           return  match ? (
                             <SyntaxHighlighter
-                              style={atomDark as { [key: string]: CSSProperties }}
+                              style={atomDark as StyleProps}
                               language={match[1]}
                               PreTag="pre"
                                className="rounded-md overflow-x-auto max-w-4xl text-[0.6rem] sm:text-sm md:text-base lg:text-base xl:text-base w-full max-h-full p-5 "
