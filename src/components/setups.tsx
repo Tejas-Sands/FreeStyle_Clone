@@ -1,9 +1,16 @@
 import { useRef, useState } from 'react';
 import { IoIosArrowBack, IoIosArrowForward, IoIosLaptop } from 'react-icons/io';
 import ReactMarkdown from 'react-markdown';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+// import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+// import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import CodeBlock from './syntax';
 
+interface SyntaxHighlighterProps {
+  language: string;
+  PreTag?: string;
+  style?: { [key: string]: React.CSSProperties };
+  [key: string]: any; // Allow any additional props
+}
 
 const sections = [
   { name: "Put @cloudstate on any class and it's properties will be stored forever and available in any request.", title: "TypeScript is The Database", content: `
@@ -133,15 +140,20 @@ export default function Slider(){
                       code({ node, className, children, ...props }) {
                         const match = /language-(\w+)/.exec(className || '');
                         return match ? (
-                          <SyntaxHighlighter
-                            style={atomDark as unknown as { [key: string]: React.CSSProperties }}
-                            language={match[1]}
-                            PreTag="pre"
-                            className="rounded-md overflow-x-auto max-w-4xl text-[0.6rem] sm:text-sm md:text-base lg:text-base xl:text-base w-full max-h-full p-5"
-                            {...props}
-                          >
+                          // <SyntaxHighlighter
+                          //   style={atomDark as unknown as { [key: string]: React.CSSProperties }}
+                          //   language={match[1]}
+                          //   PreTag="pre"
+                          //   className="rounded-md overflow-x-auto max-w-4xl text-[0.6rem] sm:text-sm md:text-base lg:text-base xl:text-base w-full max-h-full p-5"
+                          //   {...props}
+                          // >
+                          <CodeBlock
+                          language="javascript" // Set the language for syntax highlighting
+                          showLineNumbers={true} // Example of a SyntaxHighlighter prop
+                          wrapLines={true} // Another example of a SyntaxHighlighter prop
+                        >
                             {String(children).replace(/\n$/, '')}
-                          </SyntaxHighlighter>
+                          </CodeBlock>
                         ) : (
                           <code className="rounded-lg shadow-lg w-[95%]" {...props}>
                             {children}
