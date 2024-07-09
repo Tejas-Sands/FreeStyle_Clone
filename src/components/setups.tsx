@@ -3,6 +3,9 @@ import { IoIosArrowBack, IoIosArrowForward, IoIosLaptop } from 'react-icons/io';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { CSSProperties } from 'react';
+
+const style: CSSProperties = atomDark as CSSProperties;
 
 const sections = [
   { name: "Put @cloudstate on any class and it's properties will be stored forever and available in any request.", title: "TypeScript is The Database", content: `
@@ -89,10 +92,11 @@ for await (const count of counter.countStream()) {
 ];
 
 export default function Slider(){
-  const scrollRef = useRef(null);
+  
+  const scrollRef = useRef<HTMLDivElement>(null);
   const [currentSection, setCurrentSection] = useState(0);
 
-  const scrollToSection = (index) => {
+  const scrollToSection = (index: number) => {
     if (scrollRef.current) {
       const sectionWidth = scrollRef.current.clientWidth/0.962;
       const scrollAmount = sectionWidth * index;

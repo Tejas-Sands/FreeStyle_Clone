@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
@@ -10,9 +10,30 @@ export default function Footer(){
   const titleRef = useRef<HTMLDivElement>(null);
   const commandRef = useRef<HTMLDivElement>(null);
 
+  interface ScrollTriggerOptions {
+    trigger: Element | null;
+    start: string;
+    end: string;
+    scrub?: boolean;
+    toggleActions?: string;
+  }
+  
+
   useGSAP(() => {
     const elements = [titleRef.current, commandRef.current];
-    const scrollTriggers = [];
+
+    interface GsapScrollTrigger {
+      scrollTrigger: {
+        trigger: HTMLElement | null;
+        start: string;
+        end: string;
+        scrub?: boolean;
+        toggleActions?: string;
+       
+      };
+    }
+    
+    const scrollTriggers: GsapScrollTrigger[] = []; 
 
     elements.forEach((element) => {
       const trigger = gsap.from(element, {
