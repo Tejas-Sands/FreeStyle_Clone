@@ -28,6 +28,7 @@ export default function Footer(){
     
     const scrollTriggers: GsapScrollTrigger[] = []; 
 
+    if (ScrollTrigger) { 
     elements.forEach((element) => {
       const trigger = gsap.from(element, {
         opacity: 0,
@@ -43,11 +44,13 @@ export default function Footer(){
       });
       scrollTriggers.push(trigger.scrollTrigger);
     });
+  }
 
     return () => {
       scrollTriggers.forEach((st) => st.kill());
     };
   })
+
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white p-6 dark:bg-slate-900">
