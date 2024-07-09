@@ -9,20 +9,13 @@ export default function Footer(){
 
   const titleRef = useRef<HTMLDivElement>(null);
   const commandRef = useRef<HTMLDivElement>(null);
-
-  interface ScrollTriggerOptions {
-    trigger: Element | null;
-    start: string;
-    end: string;
-    scrub?: boolean;
-    toggleActions?: string;
-  }
   
 
   useGSAP(() => {
     const elements = [titleRef.current, commandRef.current];
 
     interface GsapScrollTrigger {
+      kill(): void;
       scrollTrigger: {
         trigger: HTMLElement | null;
         start: string;
