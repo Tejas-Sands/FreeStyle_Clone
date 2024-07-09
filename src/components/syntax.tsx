@@ -1,5 +1,5 @@
 import React from 'react';
-import { SyntaxHighlighter, SyntaxHighlighterProps } from 'react-syntax-highlighter';
+import { Prism as SyntaxHighlighter, SyntaxHighlighterProps } from 'react-syntax-highlighter';
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 // Adjust CodeBlockProps to match SyntaxHighlighter's children prop type

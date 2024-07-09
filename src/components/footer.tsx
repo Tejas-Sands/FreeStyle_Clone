@@ -1,56 +1,38 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Footer(){
-
-  const titleRef = useRef<HTMLDivElement>(null);
-  const commandRef = useRef<HTMLDivElement>(null);
+    const titleRef = useRef<HTMLDivElement>(null);
+    const commandRef = useRef<HTMLDivElement>(null);
   
-
-  useGSAP(() => {
-    const elements = [titleRef.current, commandRef.current];
-
-    interface GsapScrollTrigger {
-      kill(): void;
-      scrollTrigger: {
-        trigger: HTMLElement | null;
-        start: string;
-        end: string;
-        scrub?: boolean;
-        toggleActions?: string;
-       
+    useEffect(() => {
+      if (titleRef.current && commandRef.current) {
+        // Create a timeline for animations
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: 'top 80%',
+            end: 'bottom 30%',
+            scrub: 1,
+          },
+        });
+  
+        // Add animations to the timeline
+        tl.fromTo(
+          [titleRef.current, commandRef.current],
+          { opacity: 0, y: 50 },
+          { opacity: 1, y: 0, duration: 1, ease: 'power2.out', stagger: 0.3 }
+        );
+      }
+  
+      // Cleanup ScrollTriggers on component unmount
+      return () => {
+        ScrollTrigger.getAll().forEach((st) => st.kill());
       };
-    }
-    
-    const scrollTriggers: GsapScrollTrigger[] = []; 
-
-    if (ScrollTrigger) { 
-    elements.forEach((element) => {
-      const trigger = gsap.from(element, {
-        opacity: 0,
-        y: 60,
-        duration: 1,
-        scrollTrigger: {
-          trigger: element,
-          start: 'top 95%', 
-          end: 'bottom 90%', 
-          scrub: true, 
-          toggleActions: 'play none none reset', 
-        },
-      });
-      scrollTriggers.push(trigger.scrollTrigger);
-    });
-  }
-
-    return () => {
-      scrollTriggers.forEach((st) => st.kill());
-    };
-  })
-
+    }, []);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-white p-6 dark:bg-slate-900">
