@@ -1,5 +1,3 @@
-import { Button } from "@mui/material"
-import { useState } from "react"
 import { LiaCloudSolid } from "react-icons/lia";
 import { FaGithub } from "react-icons/fa6";
 import DayNight from "./darkCheck";

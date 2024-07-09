@@ -1,7 +1,7 @@
 import { gsap } from "gsap"
 import { useGSAP } from '@gsap/react';
 import { Button } from '@mui/material';
-import { useState, useRef, useEffect } from 'react'
+import { useRef } from 'react'
 
 export default function Title(){
 
