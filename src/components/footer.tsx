@@ -10,7 +10,6 @@ export default function Footer(){
   
     useEffect(() => {
       if (titleRef.current && commandRef.current) {
-        // Create a timeline for animations
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: titleRef.current,
@@ -20,7 +19,6 @@ export default function Footer(){
           },
         });
   
-        // Add animations to the timeline
         tl.fromTo(
           [titleRef.current, commandRef.current],
           { opacity: 0, y: 50 },
@@ -28,7 +26,6 @@ export default function Footer(){
         );
       }
   
-      // Cleanup ScrollTriggers on component unmount
       return () => {
         ScrollTrigger.getAll().forEach((st) => st.kill());
       };
