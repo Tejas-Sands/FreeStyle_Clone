@@ -5,13 +5,6 @@ import ReactMarkdown from 'react-markdown';
 // import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import CodeBlock from './syntax';
 
-interface SyntaxHighlighterProps {
-  language: string;
-  PreTag?: string;
-  style?: { [key: string]: React.CSSProperties };
-  [key: string]: any; // Allow any additional props
-}
-
 const sections = [
   { name: "Put @cloudstate on any class and it's properties will be stored forever and available in any request.", title: "TypeScript is The Database", content: `
 \`\`\`javascript
