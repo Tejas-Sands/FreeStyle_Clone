@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import { useRef, useState } from 'react';
 import { IoIosArrowBack, IoIosArrowForward, IoIosLaptop } from 'react-icons/io';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -126,9 +126,9 @@ export default function Slider(){
               <div key={index} className="flex-shrink-0 w-[104%] flex flex-col items-center justify-center p-4 bottom-[21%]  bg-wierd-gray">
                 <ReactMarkdown
                       components={{
-                        code({ node, inline, className,  children, ...props }) {
+                        code({ node, className,  children, ...props }) {
                           const match = /language-(\w+)/.exec(className || '')
-                          return !inline && match ? (
+                          return  match ? (
                             <SyntaxHighlighter
                               style={atomDark}
                               language={match[1]}

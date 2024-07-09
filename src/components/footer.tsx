@@ -14,7 +14,7 @@ export default function Footer(){
     const elements = [titleRef.current, commandRef.current];
     const scrollTriggers = [];
 
-    elements.forEach((element, index) => {
+    elements.forEach((element) => {
       const trigger = gsap.from(element, {
         opacity: 0,
         y: 60,
@@ -48,8 +48,8 @@ export default function Footer(){
           <div className="w-3 h-3 bg-green-500 rounded-full"></div>
         </div>
         <code>
-            <span class="text-green-400">computer:~$ </span>
-            <span class="text-white">npx freestyle deploy</span>
+            <span className="text-green-400">computer:~$ </span>
+            <span className="text-white">npx freestyle deploy</span>
         </code>
       </div>
       <div className="w-2/3 border-t border-gray-300 p-2 mt-4 mx-auto py-10"></div>
