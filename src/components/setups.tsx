@@ -118,43 +118,43 @@ export default function Slider(){
   return (
     <div className="min-h-screen flex flex-col items-center justify-center relative">
       <div className="w-2/3 border-t border-gray-300 mt-4 mx-auto py-10"></div>
-     <div className='text-3xl font-semibold text-center p-10 dark:text-slate-400'> Unified cloud solutions for comprehensive data management, real-time communication, and scalable content delivery.</div>
-    <div className="relative w-full max-w-4xl">
-      <div className="relative w-full pt-[75%] -mt-24">
-        <IoIosLaptop className="absolute inset-0 text-gray-800 w-full h-full dark:text-gray-500 " />
-        <div className="absolute inset-[20%] top-[25.7%] bottom-[29%] left-[24%] right-[24%] flex justify-center items-center">
-          <div ref={scrollRef} className="flex w-[103%] h-full overflow-hidden scrollbar-hidden">
-            {sections.map((section, index) => (
-              <div key={index} className="flex-shrink-0 w-[104%] flex flex-col items-center justify-center p-4 bottom-[21%]  bg-wierd-gray">
-                <ReactMarkdown
-                      components={{
-                        code({ node, className,  children, ...props }) {
-                          const match = /language-(\w+)/.exec(className || '')
-                          return  match ? (
-                            <SyntaxHighlighter
-                              style={atomDark as any}
-                              language={match[1]}
-                              PreTag="pre"
-                               className="rounded-md overflow-x-auto max-w-4xl text-[0.6rem] sm:text-sm md:text-base lg:text-base xl:text-base w-full max-h-full p-5 "
-                              {...props}
-                            >
-                              {String(children).replace(/\n$/, '')}
-                            </SyntaxHighlighter>
-                          ) : (
-                            <code className="rounded-lg shadow-lg w-[95%]" {...props}>
-                              {children}
-                            </code>
-                          )
-                        }
-                      }}
-                    >
-                      {section.content}
-                    </ReactMarkdown>
-              </div>
-            ))}
-           
+      <div className="text-3xl font-semibold text-center p-10 dark:text-slate-400">
+        Unified cloud solutions for comprehensive data management, real-time communication, and scalable content delivery.
+      </div>
+      <div className="relative w-full max-w-4xl">
+        <div className="relative w-full pt-[75%] -mt-24">
+          <IoIosLaptop className="absolute inset-0 text-gray-800 w-full h-full dark:text-gray-500" />
+          <div className="absolute inset-[20%] top-[25.7%] bottom-[29%] left-[24%] right-[24%] flex justify-center items-center">
+            <div ref={scrollRef} className="flex w-[103%] h-full overflow-hidden scrollbar-hidden">
+              {sections.map((section, index) => (
+                <div key={index} className="flex-shrink-0 w-[104%] flex flex-col items-center justify-center p-4 bottom-[21%] bg-wierd-gray">
+                  <ReactMarkdown
+                    components={{
+                      code({ node, className, children, ...props }) {
+                        const match = /language-(\w+)/.exec(className || '');
+                        return match ? (
+                          <SyntaxHighlighter
+                            style={atomDark}
+                            language={match[1]}
+                            PreTag="pre"
+                            className="rounded-md overflow-x-auto max-w-4xl text-[0.6rem] sm:text-sm md:text-base lg:text-base xl:text-base w-full max-h-full p-5"
+                            {...props}
+                          >
+                            {String(children).replace(/\n$/, '')}
+                          </SyntaxHighlighter>
+                        ) : (
+                          <code className="rounded-lg shadow-lg w-[95%]" {...props}>
+                            {children}
+                          </code>
+                        );
+                      },
+                    }}
+                  >
+                    {section.content}
+                  </ReactMarkdown>
+                </div>
+              ))}
           </div>
-          
         </div>
       </div>
       <div className='flex flex-col flex-wrap  text-center space-y-5 -mt-20'>
